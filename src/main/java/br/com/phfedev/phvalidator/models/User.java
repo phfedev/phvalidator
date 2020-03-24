@@ -1,7 +1,5 @@
 package br.com.phfedev.phvalidator.models;
 
-import java.util.concurrent.atomic.AtomicLong;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +16,6 @@ public class User {
 	private String cpf;
 	private String cnpj;
 	private String password;
-	private Integer requestCounter;
 	
 	
 	public String getCnpj() {
@@ -37,13 +34,6 @@ public class User {
 		this.cpf = cpf;
 	}
 
-	public Integer getRequestCounter() {
-		return requestCounter;
-	}
-
-	public void setRequestCounter(Integer requestCounter) {
-		this.requestCounter = requestCounter;
-	}
 
 	public Integer getId() {
 		return id;

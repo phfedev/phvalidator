@@ -2,7 +2,7 @@ package br.com.phfedev.phvalidator.util;
 
 import java.util.InputMismatchException;
 
-public class ValidaCNPJ {
+public class CnpjValidator {
 	public static String isCNPJ(String CNPJ) {
 
 		if (CNPJ.equals("00000000000000") || CNPJ.equals("11111111111111") || CNPJ.equals("22222222222222")

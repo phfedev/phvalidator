@@ -2,19 +2,8 @@ package br.com.phfedev.phvalidator.util;
 
 import java.util.InputMismatchException;
 
-public class ValidaCPF {
+public class CpfValidator {
 	
-	private String cpf;
-	
-	public ValidaCPF(String cpf) {
-		this.cpf = cpf;
-	}
-	
-	
-	
-	public String getCpf() {
-		return cpf;
-	}
 
 	public static String isCPF(String CPF) {
 		if (CPF.equals("00000000000") || CPF.equals("11111111111") || CPF.equals("22222222222")
