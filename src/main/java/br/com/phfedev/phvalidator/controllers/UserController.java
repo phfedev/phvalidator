@@ -1,5 +1,6 @@
 package br.com.phfedev.phvalidator.controllers;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,29 +17,20 @@ import br.com.phfedev.phvalidator.util.ValidaCPF;
 public class UserController {
 	
 
-	@PostMapping("/cpf")
+	@PostMapping(path= "/cpf", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String valdiaCpf(@RequestBody User user) {
 		RequestCounter.add();
 		System.out.println(RequestCounter.getQuantity());
-		if(ValidaCPF.isCPF(user.getCpf())) {
-			return "CPF Válido";			
-		}else {
-			return "CPF Inválido";
-		}
+		return ValidaCPF.isCPF(user.getCpf());
 	}
-	@PostMapping("/cnpj")
+	@PostMapping(path = "/cnpj", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String validaCnpj(@RequestBody User user) {
 		RequestCounter.add();
 		System.out.println(RequestCounter.getQuantity());
-		if(ValidaCNPJ.isCNPJ(user.getCnpj())) {
-			return "CNPJ Válido";			
-		}else {
-			return "CNPJ Inválido";
-		}
+		return ValidaCNPJ.isCNPJ(user.getCnpj());
 	}
-	@GetMapping("/request")
+	@GetMapping(path = "/request", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getRequestCounter() {
-		return "Quantidade:"+(int) RequestCounter.getQuantity()
-			+"\n"+RequestCounter.getPrice();
+		return RequestCounter.getPrice();
 	}
 }

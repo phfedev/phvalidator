@@ -20,9 +20,11 @@ public class RequestCounter {
     	String dbValue = Double.toString(addInt.get() * tax);
     	BigDecimal bdValue = new BigDecimal (dbValue);
     	DecimalFormat df = new DecimalFormat();
-    	df.applyPattern("R$ #,##0.00");
+    	df.applyPattern("#,##0.00");
     	String formattedValue = df.format(bdValue);
     	
-    	return "Value to pay: "+formattedValue;
+    	return "{ \"quantity\": "+addInt.get()+", "
+    			+"\n\"value\": "+formattedValue+"\n}";
+    	//return "valuetopay: "+formattedValue;
     }
 }
