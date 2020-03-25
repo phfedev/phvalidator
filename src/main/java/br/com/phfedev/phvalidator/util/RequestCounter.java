@@ -16,14 +16,14 @@ public class RequestCounter {
         return addInt.incrementAndGet();
     }
     
-    public static String getPrice() {
-    	String dbValue = Double.toString(addInt.get() * tax);
+    public static String getPrice(Integer counter) {
+    	String dbValue = Double.toString(counter * tax);
     	BigDecimal bdValue = new BigDecimal (dbValue);
     	DecimalFormat df = new DecimalFormat();
     	df.applyPattern("#,##0.00");
     	String formattedValue = df.format(bdValue);
     	
-    	return "{ \"quantity\": "+addInt.get()+", "
+    	return "{ \"quantity\": "+counter+", "
     			+"\n\"value\": "+formattedValue+"\n}";
     	//return "valuetopay: "+formattedValue;
     }

@@ -2,6 +2,7 @@ package br.com.phfedev.phvalidator.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,20 +29,25 @@ public class MainController {
 	}
 
 	@PostMapping(path = "/cpf", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String valdiaCpf(@RequestBody User user) {
-		RequestCounter.add();
-		return CpfValidator.isCPF(user.getCpf());
+	public String valdiaCpf(@RequestBody CpfValidator cpfValidator, Authentication auth) {
+		User user = userRepository.findByUsername(auth.getName());
+		user.addCounter();
+		userRepository.save(user);
+		return CpfValidator.isCPF(cpfValidator.getCpf());
 	}
 
 	@PostMapping(path = "/cnpj", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String validaCnpj(@RequestBody User user) {
-		RequestCounter.add();
-		return CnpjValidator.isCNPJ(user.getCnpj());
+	public String validaCnpj(@RequestBody CnpjValidator cnpjValidator, Authentication auth) {
+		User user = userRepository.findByUsername(auth.getName());
+		user.addCounter();
+		userRepository.save(user);
+		return CnpjValidator.isCNPJ(cnpjValidator.getCnpj());
 	}
 
 	@GetMapping(path = "/request", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String getRequestCounter() {
-		return RequestCounter.getPrice();
+	public String getRequestCounter(Authentication auth) {
+		User user = userRepository.findByUsername(auth.getName());
+		return RequestCounter.getPrice(user.getRequestCounter());
 	}
 
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.phfedev.phvalidator.config.JwtTokenUtil;
 import br.com.phfedev.phvalidator.models.JwtRequest;
 import br.com.phfedev.phvalidator.models.JwtResponse;
+import br.com.phfedev.phvalidator.models.User;
 import br.com.phfedev.phvalidator.service.JwtUserDetailsService;
 
 @RestController
@@ -37,6 +38,11 @@ public class JwtController {
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
 		final String token = jwtTokenUtil.generateToken(userDetails);
 		return ResponseEntity.ok(new JwtResponse(token));
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public ResponseEntity<?> saveUser(@RequestBody User user) throws Exception {
+		return ResponseEntity.ok(userDetailsService.save(user));
 	}
 
 	private void authenticate(String username, String password) throws Exception {

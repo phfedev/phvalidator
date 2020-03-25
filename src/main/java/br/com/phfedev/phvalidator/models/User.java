@@ -9,31 +9,27 @@ import javax.persistence.Id;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String name;
-	private String email;
-	private String cpf;
-	private String cnpj;
+	private String username;
 	private String password;
-	
-	
-	public String getCnpj() {
-		return cnpj;
+	private Integer requestCounter;
+
+	public Integer getRequestCounter() {
+		return requestCounter;
 	}
 
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
+	public void setRequestCounter(Integer requestCounter) {
+		this.requestCounter = requestCounter;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public void addCounter() {
+		if (requestCounter == null) {
+			setRequestCounter(1);
+		} else {
+			requestCounter++;
+		}
 	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
 
 	public Integer getId() {
 		return id;
@@ -43,20 +39,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String nome) {
-		this.name = nome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
