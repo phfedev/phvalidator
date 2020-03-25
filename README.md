@@ -9,6 +9,11 @@ Steps to start the webservice:
 - Done!! :D
 
 Routes:
+- Post json to login `http://localhost:8080/authenticate`
+  
+  ex.: `{ "username": "springuser", "password": "password" }`
+  Return your JWT to access the other routes
+
 - Post json CPF `http://localhost:8080/cpf`
   
   ex.: `{ "cpf": "03642048290" }`
