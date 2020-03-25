@@ -8,7 +8,7 @@ Steps to start the webservice:
 - Add the `application.properties` in you `src\main\resource` folder with the credentials
 - Download the dependencies if your IDE don't download it.
 - Open the project folder in your terminal and run: `$ ./mvnw spring-boot:run `
-- Done!! :D
+- Done!! :grin:
 
 `application.properties` file example:
 ```
@@ -25,8 +25,11 @@ jwt.secret=3ac9cdb4ca8688c34cedc1772ef24290
 Routes:
 - Post json to register a new user: `http://localhost:8080/register`
 
-  ex.: `{ "username": "phfedev", "password": "123456" }`
-  ![Register request image](http://phfedev.com.br/gitimages/register.png)
+  ex.: 
+    `{"username": "phfedev", "password": "123456"}`
+    ![Register request image](http://phfedev.com.br/gitimages/register.png)
+  
+
 - Post json to login `http://localhost:8080/authenticate`
   
   ex.: `{ "username": "phfedev", "password": "123456" }`
