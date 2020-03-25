@@ -14,21 +14,15 @@ import br.com.phfedev.phvalidator.util.RequestCounter;
 @RestController
 public class MainController {
 	
-//	@PostMapping(path = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
-//	public String authenticate(@RequestBody String login,@RequestBody String password) {
-//		return "";
-//	}
 	
 	@PostMapping(path= "/cpf", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String valdiaCpf(@RequestBody User user) {
 		RequestCounter.add();
-		System.out.println(RequestCounter.getQuantity());
 		return CpfValidator.isCPF(user.getCpf());
 	}
 	@PostMapping(path = "/cnpj", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String validaCnpj(@RequestBody User user) {
 		RequestCounter.add();
-		System.out.println(RequestCounter.getQuantity());
 		return CnpjValidator.isCNPJ(user.getCnpj());
 	}
 	@GetMapping(path = "/request", produces = MediaType.APPLICATION_JSON_VALUE)
