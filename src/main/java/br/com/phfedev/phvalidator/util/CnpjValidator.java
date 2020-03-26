@@ -14,7 +14,7 @@ public class CnpjValidator {
 	}
 
 	public static String isCNPJ(String CNPJ) {	
-		
+		if(CNPJ == null) return "{error: \"key cnpj not provided in the JSON file\"}";
 		if (CNPJ.equals("00000000000000") || CNPJ.equals("11111111111111") || CNPJ.equals("22222222222222")
 				|| CNPJ.equals("33333333333333") || CNPJ.equals("44444444444444") || CNPJ.equals("55555555555555")
 				|| CNPJ.equals("66666666666666") || CNPJ.equals("77777777777777") || CNPJ.equals("88888888888888")

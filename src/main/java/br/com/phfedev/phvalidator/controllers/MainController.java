@@ -22,14 +22,8 @@ public class MainController {
 	@Autowired
 	private UserRepository userRepository;
 
-	@PostMapping(path = "/adduser", produces = MediaType.APPLICATION_JSON_VALUE) // Map ONLY POST Requests
-	public User addNewUser(@RequestBody User user) {
-		userRepository.save(user);
-		return user;
-	}
-
 	@PostMapping(path = "/cpf", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String valdiaCpf(@RequestBody CpfValidator cpfValidator, Authentication auth) {
+	public String validCpf(@RequestBody CpfValidator cpfValidator, Authentication auth) {
 		User user = userRepository.findByUsername(auth.getName());
 		user.addCounter();
 		userRepository.save(user);
@@ -37,7 +31,7 @@ public class MainController {
 	}
 
 	@PostMapping(path = "/cnpj", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String validaCnpj(@RequestBody CnpjValidator cnpjValidator, Authentication auth) {
+	public String validCnpj(@RequestBody CnpjValidator cnpjValidator, Authentication auth) {
 		User user = userRepository.findByUsername(auth.getName());
 		user.addCounter();
 		userRepository.save(user);

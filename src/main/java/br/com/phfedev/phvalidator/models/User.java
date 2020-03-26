@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.beans.factory.annotation.Required;
+
 @Entity
 public class User {
 
@@ -14,6 +16,16 @@ public class User {
 	private String username;
 	private String password;
 	private Integer requestCounter;
+	
+	public User() {
+		
+	}
+	
+	
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
 
 	public Integer getRequestCounter() {
 		return requestCounter;
