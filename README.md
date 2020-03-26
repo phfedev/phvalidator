@@ -6,7 +6,7 @@ My webservice for CPF and CNPJ validation
 Steps to start the webservice:
 - Need MySQL installed
 - Clone repository
-- Import the folder into your workspace as a "Existing Maven Project"
+- Import the folder into your workspace as an "Existing Maven Project"
 - Download the dependencies if your IDE don't download it.
 - Add the `application.properties` in you `src\main\resource` folder with the credentials
 - Open the project folder in your terminal and run: `$ ./mvnw spring-boot:run `
