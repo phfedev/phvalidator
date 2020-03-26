@@ -47,7 +47,9 @@ Routes:
 - Post json CNPJ `http://localhost:8080/cnpj`
   
   ex.: `{ "cnpj": "12372457000185" }`
-  ![Cpf Bearer token request image](http://phfedev.com.br/gitimages/validcnpj.png)
+  ![Cnpj Bearer token request image](http://phfedev.com.br/gitimages/validcnpj.png)
   
+- Get price `http://localhost:8080/price`
 
+  ![Get price route](http://phfedev.com.br/gitimages/price.png)
   
