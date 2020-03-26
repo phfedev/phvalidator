@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.phfedev.phvalidator.config.JwtTokenUtil;
 import br.com.phfedev.phvalidator.models.JwtRequest;
 import br.com.phfedev.phvalidator.models.JwtResponse;
 import br.com.phfedev.phvalidator.models.User;
 import br.com.phfedev.phvalidator.service.JwtUserDetailsService;
+import br.com.phfedev.phvalidator.util.JwtTokenUtil;
 
 @RestController
 @CrossOrigin

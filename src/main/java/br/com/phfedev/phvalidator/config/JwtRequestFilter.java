@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import br.com.phfedev.phvalidator.service.JwtUserDetailsService;
+import br.com.phfedev.phvalidator.util.JwtTokenUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 
 @Component

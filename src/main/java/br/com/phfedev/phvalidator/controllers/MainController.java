@@ -6,8 +6,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.phfedev.phvalidator.models.User;
@@ -38,7 +36,7 @@ public class MainController {
 		return CnpjValidator.isCNPJ(cnpjValidator.getCnpj());
 	}
 
-	@GetMapping(path = "/request", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "/price", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getRequestCounter(Authentication auth) {
 		User user = userRepository.findByUsername(auth.getName());
 		return RequestCounter.getPrice(user.getRequestCounter());

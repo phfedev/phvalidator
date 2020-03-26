@@ -17,15 +17,6 @@ public class User {
 	private String password;
 	private Integer requestCounter;
 	
-	public User() {
-		
-	}
-	
-	
-	public User(String username, String password) {
-		this.username = username;
-		this.password = password;
-	}
 
 	public Integer getRequestCounter() {
 		return requestCounter;

@@ -1,4 +1,4 @@
-package br.com.phfedev.phvalidator.config;
+package br.com.phfedev.phvalidator.util;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -17,17 +17,16 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtTokenUtil implements Serializable {
 
-	
 	private static final long serialVersionUID = -5300863066720289986L;
 	public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
-	
+
 	@Value("${jwt.secret}")
 	private String secret;
-	
+
 	public String getUsernameFromToken(String token) {
 		return getClaimFromToken(token, Claims::getSubject);
 	}
-	
+
 	public Date getExpirationDateFromToken(String token) {
 		return getClaimFromToken(token, Claims::getExpiration);
 	}
@@ -40,28 +39,27 @@ public class JwtTokenUtil implements Serializable {
 	private Claims getAllClaimsFromToken(String token) {
 		return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
 	}
-	
-	//check if the token has expired
+
+	// check if the token has expired
 	private Boolean isTokenExpired(String token) {
 		final Date expiration = getExpirationDateFromToken(token);
 		return expiration.before(new Date());
 	}
-	
-	//generate token for user
+
+	// generate token for user
 	public String generateToken(UserDetails userDetails) {
 		Map<String, Object> claims = new HashMap<>();
 		return doGenerateToken(claims, userDetails.getUsername());
 	}
 
-	//create a token and define the expiration time
+	// create a token and define the expiration time
 	private String doGenerateToken(Map<String, Object> claims, String username) {
-		return Jwts.builder().setClaims(claims).setSubject(username)
-				.setIssuedAt(new Date(System.currentTimeMillis()))
+		return Jwts.builder().setClaims(claims).setSubject(username).setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
 				.signWith(SignatureAlgorithm.HS512, secret).compact();
 	}
-	
-	//validate token
+
+	// validate token
 	public Boolean validateToken(String token, UserDetails userDetails) {
 		final String username = getUsernameFromToken(token);
 		return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));

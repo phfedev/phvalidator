@@ -1,16 +1,11 @@
 package br.com.phfedev.phvalidator.models;
 
-import java.io.Serializable;
 
-public class JwtRequest implements Serializable {
+public class JwtRequest {
 
-	private static final long serialVersionUID = 7828967451541937352L;
 
 	private String username;
 	private String password;
-
-	public JwtRequest() {
-	}
 
 	public JwtRequest(String username, String password) {
 		this.setUsername(username);
