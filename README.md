@@ -1,4 +1,5 @@
 ###### Requirements: Java11, Tomcat9, MySql
+###### Optional: Eclipse EE
 
 # phvalidator
 My webservice for CPF and CNPJ validation
